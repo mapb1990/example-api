@@ -1,13 +1,14 @@
 <?php
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 /**
- * Class DatabaseSeeder
+ * Class DummyDataSeeder
  *
  * @author Miguel Borges <miguelborges@miguelborges.com>
  */
-class DatabaseSeeder extends Seeder
+class DummyDataSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,6 +17,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UserTableSeeder::class);
+        $users = factory(User::class, 10)->create();
+
     }
 }

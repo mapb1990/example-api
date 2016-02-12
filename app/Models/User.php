@@ -1,9 +1,15 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+/**
+ * Class User
+ *
+ * @package App\Models
+ * @author Miguel Borges <miguelborges@miguelborges.com>
+ */
 class User extends Authenticatable
 {
     /**

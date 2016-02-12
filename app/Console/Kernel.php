@@ -14,6 +14,9 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         // Commands\Inspire::class,
+        Commands\AppInstall::class,
+        Commands\AppRefresh::class,
+        Commands\AppSeed::class,
     ];
 
     /**
