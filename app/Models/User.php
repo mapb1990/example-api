@@ -12,6 +12,9 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  */
 class User extends Authenticatable
 {
+    const ADMIN_ROLE = 'admin';
+    const PROFESSIONAL_ROLE = 'professional';
+
     /**
      * The attributes that are mass assignable.
      *
