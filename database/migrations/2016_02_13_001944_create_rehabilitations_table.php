@@ -4,11 +4,11 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
 /**
- * Class CreateUsersTable
+ * Class CreateRehabilitationsTable
  *
  * @author Miguel Borges <miguelborges@miguelborges.com>
  */
-class CreateUsersTable extends Migration
+class CreateRehabilitationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -17,14 +17,18 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('rehabilitations', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password', 60)->nullable();
-            $table->enum('role', ['admin', 'professional'])->default('professional');
-            $table->rememberToken();
+            $table->unsignedInteger('patient_id');
+            $table->timestamp('started_at');
+            $table->timestamp('ended_at');
             $table->timestamps();
+
+            $table->foreign('patient_id')
+                ->references('id')
+                ->on('patients')
+                ->onDelete('cascade');
         });
     }
 
@@ -35,6 +39,6 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('users');
+        Schema::drop('rehabilitations');
     }
 }
