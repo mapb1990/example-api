@@ -8,7 +8,7 @@ use Illuminate\Database\Migrations\Migration;
  *
  * @author Miguel Borges <miguelborges@miguelborges.com>
  */
-class CreateProfessionalTable extends Migration
+class CreateProfessionalsTable extends Migration
 {
     /**
      * Run the migrations.

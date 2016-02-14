@@ -23,6 +23,7 @@ class CreatePatientsTable extends Migration
             $table->date('birthday');
             $table->string('email');
             $table->unsignedInteger('clinic_id');
+            $table->boolean('activated')->default(true);
             $table->timestamps();
 
             $table->foreign('clinic_id')

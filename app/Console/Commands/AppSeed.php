@@ -43,11 +43,15 @@ class AppSeed extends Command
     {
         // App seed
         $this->comment('Seeding database...');
+        \DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+
         $this->call('db:seed');
 
         if ($this->confirm('Seed application with test data?', \Config::get('app.debug'))) {
             $this->comment('Populating with dummy data...');
             $this->call('db:seed', ['--class' => 'DummyDataSeeder']);
         }
+
+        \DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }

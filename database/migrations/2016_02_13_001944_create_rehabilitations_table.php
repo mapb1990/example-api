@@ -19,7 +19,7 @@ class CreateRehabilitationsTable extends Migration
     {
         Schema::create('rehabilitations', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name', 50);
             $table->unsignedInteger('patient_id');
             $table->timestamp('started_at');
             $table->timestamp('ended_at');
