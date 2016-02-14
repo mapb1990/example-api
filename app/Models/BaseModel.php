@@ -15,9 +15,7 @@ abstract class BaseModel extends Model
     /**
      * @var array
      */
-    protected $rules = [
-        'name' => 'required|min:5|max:50',
-    ];
+    protected $rules = [];
 
     /**
      * @var array
@@ -25,21 +23,20 @@ abstract class BaseModel extends Model
     protected $uniques = [];
 
     /**
-     * @param bool $updating
      * @param bool $prefix
      * @return array
      */
-    public function getRules($updating = false, $prefix = false)
+    public function getRules($prefix = false)
     {
         if (empty($prefix)) {
-            return $this->transformRules($updating);
+            return $this->transformRules();
         }
 
         return array_combine(
             array_map(function ($k) use ($prefix) {
                 return "{$prefix}{$k}";
             }, array_keys($this->rules)),
-            $this->transformRules($updating)
+            $this->transformRules()
         );
     }
 
@@ -47,16 +44,16 @@ abstract class BaseModel extends Model
      * @param bool $updating
      * @return array
      */
-    protected function transformRules($updating = false)
+    protected function transformRules()
     {
         if (empty($this->uniques) or empty($this->rules)) {
             return $this->rules;
         }
 
-        $rules = [];
-        foreach ($this->rules as $field => $rules) {
-            if (array_key_exists($field, $this->uniques)) {
-                $rules[$field] = "{$rules}|unique:{$this->getTable()},{$field}" . ($updating ? ",{$this->getKey()}" : '');
+        $rules = $this->rules;
+        foreach ($this->rules as $field => $rules2) {
+            if (array_search($field, $this->uniques) !== false) {
+                $rules[$field] .= "|unique:{$this->getTable()},{$field},{$this->getKey()}";
             }
         }
 

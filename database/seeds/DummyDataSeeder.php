@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Clinic;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -18,6 +19,6 @@ class DummyDataSeeder extends Seeder
     public function run()
     {
         $users = factory(User::class, 9)->create();
-
+        $clinics = factory(Clinic::class, 99)->create();
     }
 }

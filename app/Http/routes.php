@@ -29,3 +29,14 @@ Route::get('/', function () {
 Route::group(['middleware' => ['web']], function () {
     //
 });
+
+
+Route::group([
+    'prefix' => 'api/v1',
+    'middleware' => ['api'],
+    'namespace' => 'Api\v1'
+], function () {
+
+    Route::resource('clinics', 'ClinicController', ['except' => ['create', 'edit', 'destroy']]);
+
+});
