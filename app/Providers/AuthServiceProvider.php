@@ -34,7 +34,7 @@ class AuthServiceProvider extends ServiceProvider
                 case 'edit-clinics':
                 case 'view-professionals':
                 case 'create-professionals':
-                case 'edit-professionals':
+                case 'delete-professionals':
                     return $user->role == User::ADMIN_ROLE;
 
                 case 'view-patients':

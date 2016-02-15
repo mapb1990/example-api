@@ -37,7 +37,7 @@ class Professional extends BaseModel
      * @var array
      */
     protected $rules = [
-        'user_id' => 'required|exists:users,id',
+        'user_id' => 'exists:users,id',
         'clinic_id' => 'required|exists:clinics,id',
         'specialty_id' => 'required|exists:specialties,id'
     ];
@@ -48,5 +48,26 @@ class Professional extends BaseModel
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function specialty()
+    {
+        return $this->belongsTo(Specialty::class);
+    }
+
+    /**
+     * Delete the professional from the database.
+     *
+     * @return bool|null
+     *
+     * @throws \Exception
+     */
+    public function delete()
+    {
+        $this->user()->delete();
+        return parent::delete();
     }
 }

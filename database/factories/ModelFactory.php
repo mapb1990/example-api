@@ -11,6 +11,8 @@
 |
 */
 
+use App\Models\Clinic;
+use App\Models\Specialty;
 use App\Models\User;
 
 $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
@@ -20,6 +22,13 @@ $factory->define(App\Models\User::class, function (Faker\Generator $faker) {
         'password' => bcrypt(str_random(10)),
         'remember_token' => str_random(10),
         'role' => $faker->randomElement([User::ADMIN_ROLE, User::PROFESSIONAL_ROLE])
+    ];
+});
+
+$factory->define(App\Models\Professional::class, function (Faker\Generator $faker) {
+    return [
+        'clinic_id' => $faker->randomElement(Clinic::lists('id')->toArray()),
+        'specialty_id' => $faker->randomElement(Specialty::lists('id')->toArray()),
     ];
 });
 

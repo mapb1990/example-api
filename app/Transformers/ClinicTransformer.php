@@ -26,8 +26,12 @@ class ClinicTransformer extends TransformerAbstract
             'links' => [
                 [
                     'rel' => 'self',
-                    'uri' => route('api.v1.clinics.show', $clinic->id),
-                ]
+                    'uri' => "clinics/{$clinic->id}"
+                ],
+                [
+                    'rel' => 'professionals',
+                    'uri' => "clinics/{$clinic->id}/professionals/"
+                ],
             ]
         ];
     }

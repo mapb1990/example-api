@@ -25,7 +25,7 @@ class ClinicController extends ApiController
     {
         $this->authorize('view-clinics');
 
-        return $this->respondCollection(Clinic::paginate(15), new ClinicTransformer());
+        return $this->respondCollection(Clinic::paginate($this->resultsPerPage), new ClinicTransformer());
     }
 
     /**

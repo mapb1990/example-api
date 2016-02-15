@@ -38,7 +38,7 @@ class User extends BaseModel implements
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password'
     ];
 
     /**
@@ -75,5 +75,4 @@ class User extends BaseModel implements
     {
         return $this->hasOne(Professional::class);
     }
-
 }

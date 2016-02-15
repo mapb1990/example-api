@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Clinic;
+use App\Models\Professional;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -18,7 +19,12 @@ class DummyDataSeeder extends Seeder
      */
     public function run()
     {
-        $users = factory(User::class, 9)->create();
-        $clinics = factory(Clinic::class, 99)->create();
+        factory(User::class, 18)->create();
+        factory(Clinic::class, 99)->create();
+
+        $users = User::where('role', User::PROFESSIONAL_ROLE)->has('professional', '=', 0)->get();
+        $users->each(function (User $user) {
+            $user->professional()->save(factory(Professional::class)->make(['clinic_id' => 1]));
+        });
     }
 }

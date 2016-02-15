@@ -26,11 +26,6 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
-});
-
-
 Route::group([
     'prefix' => 'api/v1',
     'middleware' => ['api'],
@@ -38,5 +33,13 @@ Route::group([
 ], function () {
 
     Route::resource('clinics', 'ClinicController', ['except' => ['create', 'edit', 'destroy']]);
+    Route::resource('clinics.professionals', 'ClinicProfessionalController', ['except' => ['create', 'edit', 'update']]);
+    Route::post('password/reset', 'PasswordController@reset');
 
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

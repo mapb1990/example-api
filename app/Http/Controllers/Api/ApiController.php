@@ -28,6 +28,10 @@ abstract class ApiController extends Controller
      * @var int
      */
     protected $statusCode = 200;
+    /**
+     * @var int
+     */
+    protected $resultsPerPage = 20;
 
     /**
      * ApiController constructor.
