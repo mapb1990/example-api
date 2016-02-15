@@ -32,6 +32,10 @@ class ClinicTransformer extends TransformerAbstract
                     'rel' => 'professionals',
                     'uri' => "clinics/{$clinic->id}/professionals/"
                 ],
+                [
+                    'rel' => 'patients',
+                    'uri' => "clinics/{$clinic->id}/patients/"
+                ],
             ]
         ];
     }
