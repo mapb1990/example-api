@@ -17,7 +17,7 @@ class Rehabilitation extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'patient_id', 'started_at', 'ended_at'
+        'name', 'patient_id', 'professional_by', 'started_at', 'ended_at'
     ];
 
     /**
@@ -50,5 +50,13 @@ class Rehabilitation extends BaseModel
     public function patient()
     {
         return $this->belongsTo(Patient::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function professional()
+    {
+        return $this->belongsTo(Professional::class);
     }
 }

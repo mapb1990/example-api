@@ -34,6 +34,8 @@ Route::group([
 
     Route::resource('clinics', 'ClinicController', ['except' => ['create', 'edit', 'destroy']]);
     Route::resource('clinics.professionals', 'ClinicProfessionalController', ['except' => ['create', 'edit', 'update']]);
+    Route::put('clinics/{clinics}/patients/{patients}/status', ['as' => 'api.v1.clinics.patients.status', 'uses' => 'ClinicPatientController@status']);
+    Route::resource('clinics.patients', 'ClinicPatientController', ['except' => ['create', 'edit', 'destroy']]);
     Route::post('password/reset', 'PasswordController@reset');
 
 });

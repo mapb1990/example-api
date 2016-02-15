@@ -12,6 +12,7 @@
 */
 
 use App\Models\Clinic;
+use App\Models\Professional;
 use App\Models\Specialty;
 use App\Models\User;
 
@@ -50,8 +51,9 @@ $factory->define(App\Models\Patient::class, function (Faker\Generator $faker) {
 
 $factory->define(App\Models\Rehabilitation::class, function (Faker\Generator $faker) {
     return [
-        'name' => $faker->words(2),
+        'name' => $faker->sentence(2),
         'started_at' => $faker->dateTimeBetween('+1 day', '+3 days'),
         'ended_at' => $faker->dateTimeBetween('+5 days', '+30 days'),
+        'professional_id' => $faker->randomElement(Professional::lists('id')->toArray())
     ];
 });

@@ -21,6 +21,7 @@ class CreateRehabilitationsTable extends Migration
             $table->increments('id');
             $table->string('name', 50);
             $table->unsignedInteger('patient_id');
+            $table->unsignedInteger('professional_id');
             $table->timestamp('started_at');
             $table->timestamp('ended_at');
             $table->timestamps();
@@ -28,6 +29,10 @@ class CreateRehabilitationsTable extends Migration
             $table->foreign('patient_id')
                 ->references('id')
                 ->on('patients')
+                ->onDelete('cascade');
+            $table->foreign('professional_id')
+                ->references('id')
+                ->on('professionals')
                 ->onDelete('cascade');
         });
     }

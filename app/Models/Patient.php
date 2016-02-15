@@ -23,7 +23,7 @@ class Patient extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'birthday', 'email', 'clinic_id', 'activated'
+        'name', 'birthday', 'email', 'clinic_id'
     ];
 
     /**
@@ -57,5 +57,13 @@ class Patient extends BaseModel
     public function clinic()
     {
         return $this->belongsTo(Clinic::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function rehabilitations()
+    {
+        return $this->hasMany(Rehabilitation::class);
     }
 }

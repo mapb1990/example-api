@@ -48,12 +48,14 @@ class AppRefresh extends Command
         )) {
             // First reset data
             $this->info('Uninstalling application...');
+            \DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
             $this->call('migrate:reset');
             \Schema::drop(\Config::get('database.migrations'));
             $this->info('Application uninstall successively.');
 
             // Now install it again
             $this->call('app:install');
+            \DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
         }
     }
 }
