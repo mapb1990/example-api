@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Delatbabel\Elocrypt\Elocrypt;
+
 /**
  * Class Patient
  *
@@ -10,6 +12,8 @@ namespace App\Models;
  */
 class Patient extends BaseModel
 {
+    use Elocrypt;
+
     /**
      * The table associated with the model.
      *
@@ -49,6 +53,15 @@ class Patient extends BaseModel
         'email' => 'required|email',
         'clinic_id' => 'required|exists:clinics,id',
         'activated' => 'boolean'
+    ];
+
+    /**
+     * The attributes that should be encrypted on save.
+     *
+     * @var array
+     */
+    protected $encrypts = [
+        'name', 'birthday', 'email'
     ];
 
     /**

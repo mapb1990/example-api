@@ -10,14 +10,16 @@
         "barryvdh/laravel-ide-helper": "^2.1",
         "barryvdh/laravel-debugbar": "^2.0",
         "laravelcollective/html": "^5.1",
-        "league/fractal": "^0.13.0"
+        "league/fractal": "^0.13.0",
+        "delatbabel/elocryptfive": "~1.0"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "symfony/css-selector": "2.8.*|3.0.*",
-        "symfony/dom-crawler": "2.8.*|3.0.*"
+        "symfony/dom-crawler": "2.8.*|3.0.*",
+        "doctrine/dbal": "~2.3"
     },
     "autoload": {
         "classmap": [
@@ -48,7 +50,7 @@
         ],
         "post-update-cmd": [
             "php artisan ide-helper:generate",
-            "php artisan ide-helper:models --ignore=\"App\\Models\\Model\" --nowrite",
+            "php artisan ide-helper:models --ignore=\"App\\Models\\BaseModel\" --nowrite",
             "php artisan ide-helper:meta",
             "php artisan optimize"
         ]
