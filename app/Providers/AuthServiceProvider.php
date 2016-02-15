@@ -41,7 +41,6 @@ class AuthServiceProvider extends ServiceProvider
                 case 'create-patients':
                 case 'edit-patients':
                 case 'deactivate-patients':
-                case 'view-rehabilitations':
                 case 'define-rehabilitations':
                     return $user->role == User::PROFESSIONAL_ROLE;
             }

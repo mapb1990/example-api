@@ -31,10 +31,6 @@ class RehabilitationTransformer extends TransformerAbstract
             'updated_at' => $rehabilitation->updated_at->toDateTimeString(),
             'links' => [
                 [
-                    'rel' => 'self',
-                    'uri' => "rehabilitations/{$rehabilitation->id}"
-                ],
-                [
                     'rel' => 'patients',
                     'uri' => "clinics/{$rehabilitation->patient->clinic_id}/patients/{$rehabilitation->patient_id}"
                 ],

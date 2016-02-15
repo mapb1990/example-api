@@ -31,7 +31,7 @@ class UserTableSeeder extends Seeder
         $user->save();
 
         $user = new User([
-            'name' => 'Profissional',
+            'name' => 'Dr. Profissional',
             'email' => 'prof@gmail.com',
             'password' => '123456'
         ]);

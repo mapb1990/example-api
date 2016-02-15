@@ -17,7 +17,7 @@ class Rehabilitation extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'patient_id', 'professional_by', 'started_at', 'ended_at'
+        'name', 'started_at', 'ended_at', 'professional_id'
     ];
 
     /**
@@ -39,7 +39,8 @@ class Rehabilitation extends BaseModel
      */
     protected $rules = [
         'name' => 'required|min:5|max:50',
-        'patient_id' => 'required|exists:patients,id',
+        'patient_id' => 'exists:patients,id',
+        'professional_id' => 'exists:professionals,id',
         'started_at' => 'required|date|before:ended_at',
         'ended_at' => 'required|date|after:started_at'
     ];
