@@ -24,6 +24,7 @@ class CreateRehabilitationsTable extends Migration
             $table->unsignedInteger('professional_id');
             $table->timestamp('started_at');
             $table->timestamp('ended_at');
+            $table->boolean('reminder')->default(false);
             $table->timestamps();
 
             $table->foreign('patient_id')

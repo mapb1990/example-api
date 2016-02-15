@@ -13,10 +13,10 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        // Commands\Inspire::class,
         Commands\AppInstall::class,
         Commands\AppRefresh::class,
         Commands\AppSeed::class,
+        Commands\RehabilitationNotify::class
     ];
 
     /**
@@ -27,7 +27,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')
-        //          ->hourly();
+        $schedule->command('notify:rehabilitations')->twiceDaily(1, 22);
     }
 }

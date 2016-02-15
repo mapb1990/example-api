@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Builder;
+
 class Rehabilitation extends BaseModel
 {
     /**
@@ -59,5 +62,17 @@ class Rehabilitation extends BaseModel
     public function professional()
     {
         return $this->belongsTo(Professional::class);
+    }
+
+    /**
+     * Scope a query to only include rehabilitations that ended in next days.
+     *
+     * @param Builder $query
+     * @param int $days
+     * @return Builder
+     */
+    public function scopeEndedInNextDays(Builder $query, $days = 15)
+    {
+        return $query->where('ended_at', '<=', Carbon::now()->addDays($days));
     }
 }

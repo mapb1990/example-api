@@ -76,6 +76,7 @@ namespace App\Models{
  * @property \Carbon\Carbon $updated_at
  * @property-read \App\Models\Patient $patient
  * @property-read \App\Models\Professional $professional
+ * @method static \Illuminate\Database\Query\Builder|\App\Models\Rehabilitation endedInNextDays($days = 15)
  */
 	class Rehabilitation {}
 }
